@@ -1,0 +1,42 @@
+Link => git clone https://github.com/khinekhine-teacher/fb-follow-checker-bot.git /root/fb_bot2
+
+GitHub clone အောင်မြင်ပြီပါပြီ! ဆက်လက် တစ်ဆင့်ချင်း run ပါ:
+Step 1 — Python packages install
+Bash
+pip3 install aiogram pillow
+ပြီးသည်အထိ စောင့်ပါ (1-2 မိနစ်ကြာနိုင်သည်)
+Step 2 — Bot Token + Admin ID သတ်မှတ်ရန်
+Bash
+cat > /root/fb_bot2/.env << 'EOF'
+BOT_TOKEN=8908867218:AAHOxEujRxyfDskdWv2HairpqJGPoAZvs0g
+ADMIN_IDS=your_telegram_user_id
+EOF
+your_telegram_user_id ကို @userinfobot တွင် /start ပေးပြီး ရယူပါ (ဥပမာ: 123456789)
+Step 3 — Systemd service ဖန်တီးရန်
+Bash
+cat > /etc/systemd/system/fbbot.service << 'EOF'
+[Unit]
+Description=Facebook Follow Checker Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/fb_bot2
+ExecStart=/usr/bin/python3 fb_analyzer_bot.py
+Restart=always
+RestartSec=10
+EnvironmentFile=/root/fb_bot2/.env
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+Step 4 — Service start
+systemctl daemon-reload && systemctl enable fbbot && systemctl start fbbot
+
+Step 5 — Status စစ်ဆေးရန်
+Bash
+systemctl status fbbot
+active (running) မြင်ရပါက အောင်မြင်ပြီဖြစ်သည်။
+
