@@ -40,3 +40,13 @@ Bash
 systemctl status fbbot
 active (running) မြင်ရပါက အောင်မြင်ပြီဖြစ်သည်။
 
+Log ကြည့်ရန်:
+Bash
+journalctl -u fbbot -f
+(ထွက်ရန် Ctrl+C)
+Bot restart လုပ်ရန် (code update ပြီးနောက်):
+Bash
+cd /root/fb_bot2 && git pull && systemctl restart fbbot
+Bot ရပ်ရန်:
+Bash
+systemctl stop fbbot
