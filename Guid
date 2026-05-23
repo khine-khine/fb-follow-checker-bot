@@ -8,7 +8,7 @@ pip3 install aiogram pillow
 Step 2 — Bot Token + Admin ID သတ်မှတ်ရန်
 Bash
 cat > /root/fb_bot2/.env << 'EOF'
-BOT_TOKEN=8908867218:AAHOxEujRxyfDskdWv2HairpqJGPoAZvs0g
+BOT_TOKEN=
 ADMIN_IDS=your_telegram_user_id
 EOF
 your_telegram_user_id ကို @userinfobot တွင် /start ပေးပြီး ရယူပါ (ဥပမာ: 123456789)
