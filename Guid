@@ -50,3 +50,35 @@ cd /root/fb_bot2 && git pull && systemctl restart fbbot
 Bot ရပ်ရန်:
 Bash
 systemctl stop fbbot
+
+
+systemd service file ဖန်တီးပါ
+sudo nano /etc/systemd/system/fbbot.service
+
+[Unit]
+Description=Facebook Follow Checker Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/fb_bot2
+
+ExecStart=/root/fb_bot2/.venv/bin/python /root/fb_bot2/fb_analyzer_bot.py
+
+EnvironmentFile=/root/fb_bot2/.env
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl enable fbbot
+sudo systemctl start fbbot
+sudo systemctl status fbbot
+sudo journalctl -u fbbot -f
+Ctrl+C
+sudo systemctl stop fbbot
+sudo systemctl restart fbbot
