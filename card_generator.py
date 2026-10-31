@@ -6,8 +6,8 @@ Summary Card Image Generator  —  v5  (Large & Bold)
 from PIL import Image, ImageDraw, ImageFont
 import io
 
-FONT_BOLD = "/usr/local/lib/python3.11/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf"
-FONT_REG  = "/usr/local/lib/python3.11/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf"
+FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+FONT_REG  = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 W, H = 1200, 860
 

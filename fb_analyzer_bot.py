@@ -514,7 +514,7 @@ def format_stats(d: dict, L: dict) -> str:
 
 def html_code(value: str) -> str:
     """Safely render a value as Telegram HTML inline code."""
-    return f"<code>{html.escape(str(value or ""))}</code>"
+    return f"<code>{html.escape(str(value or ''))}</code>"
 
 
 def format_page(nfb: list, page: int, L: dict) -> str:
